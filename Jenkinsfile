@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        git 'Default'
+    }
+
     environment {
         IMAGE_NAME = "mayutama23/ci-cd-spring"
         DOCKER_CREDENTIALS_ID = 'dockerhub'
