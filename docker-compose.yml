@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    image: ci-cd-spring:1.0.0
+    container_name: ci-cd-spring
+    ports:
+      - "8082:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
