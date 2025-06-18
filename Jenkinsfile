@@ -53,7 +53,7 @@ pipeline {
                     kubectl apply -f k8s/service.yaml
                     kubectl apply -f k8s/ingress.yaml
 
-                    kubectl set image deployment/myapp-deployment myapp=${IMAGE_NAME}:${BUILD_NUMBER} --record
+                    kubectl set image deployment/‎ci-cd-spring-app-deployment ‎ci-cd-spring-app=${IMAGE_NAME}:${BUILD_NUMBER} --record
                     """
                 }
             }
