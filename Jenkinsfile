@@ -20,7 +20,7 @@ pipeline {
             steps {
                 git branch: 'main',
                     credentialsId: "${env.GITHUB_CREDENTIALS_ID}",
-                    url: 'https://github.com/Myudhaap/ci-cd-sprin'
+                    url: 'https://github.com/Myudhaap/ci-cd-spring'
             }
         }
 
