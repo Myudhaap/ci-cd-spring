@@ -37,7 +37,24 @@ pipeline {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_CREDENTIALS_ID}") {
                         dockerImage.push()
+                        dockerImage.push("latest")
                     }
+                }
+            }
+        }
+
+        stage('Deploy to Minikube K8S') {
+            steps {
+                script {
+                    sh """
+                    kubectl config use-context minikube
+
+                    kubectl apply -f k8s/deployment.yaml
+                    kubectl apply -f k8s/service.yaml
+                    kubectl apply -f k8s/ingress.yaml
+
+                    kubectl set image deployment/myapp-deployment myapp=${IMAGE_NAME}:${BUILD_NUMBER} --record
+                    """
                 }
             }
         }

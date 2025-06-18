@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ci-cd-spring-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ci-cd-spring-app
+  template:
+    metadata:
+      labels:
+        app: ci-cd-spring-app
+    spec:
+      containers:
+        - name: ci-cd-spring-app
+          image: mayutama23/ci-cd-spring:latest
+          ports:
+            - containerPort: 8080
